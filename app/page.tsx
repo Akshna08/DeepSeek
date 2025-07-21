@@ -10,10 +10,11 @@ import { useAppContext } from "@/context/AppContext";
 export default function Home() {
 
   const [expand, setExpand] = useState(false)
-  const [messages, setMessages] = useState([])
+  type MessageType = { role: string; content: string };
+  const [messages, setMessages] = useState<MessageType[]>([])
   const [isLoding, setIsLoding] = useState(false)
   const {selectedChat} = useAppContext();
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(()=>{
     if(selectedChat) {
